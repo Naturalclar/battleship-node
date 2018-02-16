@@ -13,21 +13,13 @@ function create2DArray(size) {
   return array;
 }
 
-/**
- * setMessage(message)
- * @param {string} message
- * set the message text to given message
- */
-function setMessage(message) {
-  const el = document.getElementById('message');
-  el.innerHTML = message;
-}
-
 class Board {
   /**
    * Board
    */
-  constructor(player) {
+  constructor(store, game, player) {
+    this.store = store;
+    this.game = game;
     this.player = player;
     this.el = document.createElement('div');
     this.el.className = 'board';
@@ -42,6 +34,11 @@ class Board {
   }
 
   init() {
+    // disable board if its your turn
+    if (this.isYourturn()) {
+      this.el.classList.add('board-disable');
+    }
+
     // Create columns label
     this.columns = document.createElement('ul');
     this.columns.classList.add('board__columns');
@@ -94,22 +91,37 @@ class Board {
   }
 
   /**
+   * isYourTurn()
+   * returns true if it is this player's turn
+   */
+  isYourturn() {
+    return this.store.getCurrentPlayer() === this.player;
+  }
+
+  /**
    * onClick()
    */
   onClick(event) {
-    const { x, y } = this.getMousePos(event);
-    if (this.player.getStateAtPos(x, y) !== 0) {
-      setMessage('Already Taken!');
-      return;
-    }
-    if (this.player.getMap(x, y) === HIT) {
-      this.player.setState(x, y, HIT);
-      setMessage('Hit!');
+    if (!this.isYourturn()) {
+      const { x, y } = this.getMousePos(event);
+      if (this.player.getStateAtPos(x, y) !== 0) {
+        this.store.setMessage('Already Taken!');
+        return;
+      }
+      if (this.player.getMap(x, y) === HIT) {
+        this.player.setState(x, y, HIT);
+        this.store.setMessage('Hit!');
+      } else {
+        this.player.setState(x, y, MISS);
+        this.store.setMessage('Miss!');
+        this.store.setTurn(!this.store.getTurn());
+        this.game.reRender();
+      }
+      this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
     } else {
-      this.player.setState(x, y, MISS);
-      setMessage('Miss!');
+      this.store.setMessage('It\'s not your turn!');
+      this.game.reRender();
     }
-    this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
   }
 
   /**

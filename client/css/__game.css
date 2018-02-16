@@ -13,3 +13,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.game__message {
+  border: 1px solid;
+  padding: 1rem;
+  width: 200px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

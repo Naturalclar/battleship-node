@@ -16,4 +16,9 @@ class Game {
     this.el.innerHTML = '';
     this.state = new Controller(this.store, this, this.el);
   }
+
+  reRender() {
+    this.el.innerHTML = '';
+    this.state.render();
+  }
 }

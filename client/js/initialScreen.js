@@ -13,7 +13,6 @@ class InitialScreen {
     this.store = store;
     this.game = game;
     this.el = el;
-    this.el.innerHTML = '';
     this.render();
   }
 
@@ -36,6 +35,7 @@ class InitialScreen {
    * rendering the InitialScreen
    */
   render() {
+    this.el.innerHTML = '';
     const container = document.createElement('div');
     container.className = 'init';
 

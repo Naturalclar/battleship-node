@@ -9,21 +9,26 @@ class Controller {
   }
 
   init() {
-    this.el.innerHTML = '';
     this.store.setTurn(Math.random() < 0.5);
     // if true, it's player1's move
+    this.store.clearState();
     this.render();
   }
 
   render() {
+    this.el.innerHTML = '';
     const turn = document.createElement('h2');
     turn.id = 'display-turn';
     const message = document.createElement('p');
-    message.id = 'message';
+    message.className = 'game__message';
+    const messageText = document.createTextNode(this.store.getMessage());
+    message.appendChild(messageText);
+
+
     const container = document.createElement('div');
     container.className = 'game__container';
-    const player1 = new PlayerBoard(this.store.player1);
-    const player2 = new PlayerBoard(this.store.player2);
+    const player1 = new PlayerBoard(this.store, this.game, this.store.player1);
+    const player2 = new PlayerBoard(this.store, this.game, this.store.player2);
 
     container.appendChild(player1.getEl());
     container.appendChild(player2.getEl());
@@ -42,7 +47,7 @@ class Controller {
 
   displayTurn() {
     const turn = document.getElementById('display-turn');
-    const player = this.store.getCurrentPlayer();
+    const player = this.store.getCurrentPlayer().getName();
     turn.innerHTML = `It's <span class="game__current_player">${player}</span>'s Turn!`;
   }
 }

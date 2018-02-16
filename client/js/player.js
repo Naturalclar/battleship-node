@@ -43,4 +43,7 @@ class Player {
     return this.state;
   }
 
+  clear() {
+    this.state = initMap(SIZE);
+  }
 }
