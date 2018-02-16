@@ -1,9 +1,10 @@
 /* global document */
 
 class InitialScreen {
-  constructor(store) {
+  constructor(store, game, el) {
     this.store = store;
-    this.el = document.getElementById('app');
+    this.game = game;
+    this.el = el;
     this.el.innerHTML = '';
     this.render();
   }
@@ -14,8 +15,8 @@ class InitialScreen {
     const player2 = document.getElementById('player2');
     this.store.setPlayer1(player1.value);
     this.store.setPlayer2(player2.value);
-    const controller = new Controller(this.store);
-  };
+    this.game.startGame();
+  }
 
   render() {
     const container = document.createElement('div');

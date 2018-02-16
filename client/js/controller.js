@@ -3,9 +3,10 @@
 /* eslint-disable no-unused-vars */
 
 class Controller {
-  constructor(store) {
+  constructor(store, game, el) {
     this.store = store;
-    this.el = document.getElementById('app');
+    this.game = game;
+    this.el = el;
     this.init();
   }
 
@@ -26,12 +27,11 @@ class Controller {
     const player1 = new Player(this.store.getPlayer1());
     const player2 = new Player(this.store.getPlayer2());
 
-
     container.appendChild(player1.getEl());
     container.appendChild(player2.getEl());
     const button = document.createElement('button');
     const buttonText = document.createTextNode('Reset Game!');
-    button.onclick = () => { this.init(); };
+    button.onclick = () => { this.game.init(); };
     button.appendChild(buttonText);
 
     this.el.innerHTML = '';

@@ -1,3 +1,4 @@
+
 class Store {
   constructor() {
     this.player1 = 'Bob';

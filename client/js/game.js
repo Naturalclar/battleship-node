@@ -1,9 +1,21 @@
-/* global window */
+/* global document */
+/* global InitialScreen */
 /* global Controller */
-/* global Store */
 
-window.onload = () => {
-  const store = new Store();
-  const init = new InitialScreen(store);
-};
+class Game {
+  constructor(store) {
+    this.state = null;
+    this.store = store;
+    this.el = document.getElementById('app');
+  }
 
+  init() {
+    this.el.innerHTML = '';
+    this.state = new InitialScreen(this.store, this, this.el);
+  }
+
+  startGame() {
+    this.el.innerHTML = '';
+    this.state = new Controller(this.store, this, this.el);
+  }
+}
