@@ -42,14 +42,19 @@ class Board {
    * Board
    * @param {string} id - id of the DOM element
    */
-  constructor(id) {
-    this.el = document.getElementById(id);
+  constructor() {
+    this.el = document.createElement('div');
+    this.el.className = 'board';
     this.el.innerHTML = '';
     this.map = create2DArray(SIZE);
     this.state = create2DArray(SIZE);
     this.x = 0;
     this.y = 0;
     this.init();
+  }
+
+  getEl() {
+    return this.el;
   }
 
   init() {

@@ -28,3 +28,20 @@ footer {
   left: 0;
   text-align: center;
 }
+
+#app {
+  padding: 64px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#message {
+  border: 1px solid;
+  padding: 1rem;
+  width: 200px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

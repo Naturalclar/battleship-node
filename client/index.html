@@ -8,27 +8,12 @@
   </head>
   <body>
     <header>Simple Battleship</header>
-    <div class="game">
-      <h2 id="display-turn"></h2>
-      <p id="message"></p>
-      <div class="game__container">
-        <div class="game__player">
-          <h3>Player 1's Board</h3>
-          <div id="player1" class="board">
-          </div>
-        </div>
-        <div class="game__player">
-          <h3>Player 2's Board</h3>
-          <div id="player2" class="board">
-          </div>
-        </div>
-      </div>
-      <button id="start">Start Game!</button>
-    </div>
+    <div id="app" class="game"></div>
     <footer>Jesse Katsumata &copy;2017</footer>
   </body>
 
   <script type="text/javascript" src="/js/board.js"></script>
+  <script type="text/javascript" src="/js/player.js"></script>
   <script type="text/javascript" src="/js/controller.js"></script>
   <script type="text/javascript" src="/js/game.js"></script>
 </html>
