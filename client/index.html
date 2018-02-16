@@ -9,9 +9,17 @@
   <body>
     <header>Simple Battleship</header>
     <div class="container">
+      <h2>Player 1's Turn</h2>
+      <p>Hit!</p>
       <div class="game">
-        <canvas id="canvas-grid1" width="321" height="321">Your Browser does not support canvas.</canvas>
-        <canvas id="canvas-grid2" width="321" height="321">Your Browser does not support canvas.</canvas>        
+        <div class="board">
+          <h3>Player 1's Board</h3>
+          <canvas id="canvas-grid1" width="321" height="321">Your Browser does not support canvas.</canvas>
+        </div>
+        <div class="board">
+          <h3>Player 2's Board</h3>
+          <canvas id="canvas-grid2" width="321" height="321">Your Browser does not support canvas.</canvas>        
+        </div>
       </div>
       <button>Start Game!</button>
     </div>

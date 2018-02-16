@@ -35,3 +35,15 @@ footer {
   flex-direction: column;
   align-items: center;
 }
+
+.game {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.board {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+}

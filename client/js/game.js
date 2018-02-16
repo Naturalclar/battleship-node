@@ -1,4 +1,5 @@
 /* global window */
+/* global Board */
 // const Board = require('./board');
 
 window.onload = () => {

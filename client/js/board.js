@@ -2,7 +2,7 @@
 
 const GRID_SIZE = 32;
 
-//module.exports = 
+// module.exports =
 class Board {
   constructor(id) {
     this.canvas = document.getElementById(id);
@@ -36,13 +36,13 @@ class Board {
   /**
    * drawTile(x,y)
    * - draws a tile at position x, y
-   * @param {number} x 
+   * @param {number} x
    * x position of where it will be drawn
-   * @param {number} y 
+   * @param {number} y
    * y position of where it will be drawn
    */
   drawTile(x, y) {
-      return -42;
-    }
-};
+    return -42;
+  }
+}
 
