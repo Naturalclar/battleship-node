@@ -2,19 +2,39 @@
 
 const SIZE = 10;
 const GRID_SIZE = 32;
+const EMPTY = 0;
+const HIT = 1;
+const MISS = 2;
+const SUNK = 3;
+
 const COLOR = {
-  0: 'white',
-  1: 'red',
-  2: 'blue',
-  3: 'green',
+  0: 'white', // empty
+  1: 'red', // hit
+  2: 'blue', // miss
+  3: 'gray', // sunk
 };
 
+/**
+ * create2DArray(size)
+ * @param {number} size
+ * Initialize an 2D array of given size, filled with 0
+ */
 function create2DArray(size) {
   const array = new Array(size).fill(0);
   array.forEach((val, index) => {
     array[index] = new Array(size).fill(0);
   });
   return array;
+}
+
+/**
+ * setMessage(message)
+ * @param {string} message
+ * set the message text to given message
+ */
+function setMessage(message) {
+  const el = document.getElementById('message');
+  el.innerHTML = message;
 }
 
 class Board {
@@ -50,10 +70,18 @@ class Board {
    */
   onClick(event) {
     const { x, y } = this.getMousePos(event);
-    console.log(x, y);
-    this.state[x][y] = 2;
+    if (this.state[x][y] !== 0) {
+      setMessage('Already Taken!');
+      return;
+    }
+    if (this.map[x][y] === HIT) {
+      this.state[x][y] = HIT;
+      setMessage('Hit!');
+    } else {
+      this.state[x][y] = MISS;
+      setMessage('Miss!');
+    }
     this.drawTile(x, y, COLOR[this.state[x][y]]);
-    console.log(this.state);
   }
 
   /**
