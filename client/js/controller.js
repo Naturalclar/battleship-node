@@ -3,6 +3,9 @@
 /* eslint-disable no-unused-vars */
 
 class Controller {
+  constructor(store) {
+    this.store = store;
+  } 
   init() {
     this.el = document.getElementById('app');
     this.turn = Math.random() < 0.5;
@@ -18,8 +21,8 @@ class Controller {
     message.id = 'message';
     const container = document.createElement('div');
     container.className = 'game__container';
-    const player1 = new Player('Bob');
-    const player2 = new Player('Charlie');
+    const player1 = new Player(this.store.getPlayer1());
+    const player2 = new Player(this.store.getPlayer2());
 
 
     container.appendChild(player1.getEl());

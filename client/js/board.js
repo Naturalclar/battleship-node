@@ -1,4 +1,5 @@
 /* global document */
+/* eslint-disable no-unused-vars */
 
 const SIZE = 10;
 const GRID_SIZE = 32;
