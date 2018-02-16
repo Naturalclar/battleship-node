@@ -47,3 +47,48 @@ footer {
   display: flex;
   flex-direction: column;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(11, 32px);
+  grid-template-rows: repeat(11,32px);
+}
+
+.columns-list,
+.rows-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.columns-list {
+  grid-column: 2 / 12;
+  display: grid;
+  grid-template-columns: repeat(10, 32px);
+  grid-template-rows: 100%;
+}
+
+.rows-list {
+  grid-row: 2 / 12;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(10, 32px);
+}
+
+.columns-list li,
+.rows-list li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+canvas {
+  grid-area: 2 / 2 / 12 / 12;
+}
+
+.name {
+  color: red;
+}
