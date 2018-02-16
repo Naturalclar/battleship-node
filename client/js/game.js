@@ -4,7 +4,6 @@
 
 window.onload = () => {
   const store = new Store();
-  const game = new Controller(store);
-  game.init();
+  const init = new InitialScreen(store);
 };
 

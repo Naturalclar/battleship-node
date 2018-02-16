@@ -5,12 +5,14 @@
 class Controller {
   constructor(store) {
     this.store = store;
-  } 
-  init() {
     this.el = document.getElementById('app');
-    this.turn = Math.random() < 0.5;
-    // if true, it's player1's move
+    this.init();
+  }
 
+  init() {
+    this.el.innerHTML = '';
+    this.store.setTurn(Math.random() < 0.5);
+    // if true, it's player1's move
     this.render();
   }
 
@@ -28,7 +30,7 @@ class Controller {
     container.appendChild(player1.getEl());
     container.appendChild(player2.getEl());
     const button = document.createElement('button');
-    const buttonText = document.createTextNode('Start Game!');
+    const buttonText = document.createTextNode('Reset Game!');
     button.onclick = () => { this.init(); };
     button.appendChild(buttonText);
 
@@ -42,10 +44,7 @@ class Controller {
 
   displayTurn() {
     const turn = document.getElementById('display-turn');
-    let player = 'Player 1';
-    if (!this.turn) {
-      player = 'Player 2';
-    }
+    const player = this.store.getCurrentPlayer();
     turn.innerHTML = `It's <span class="game__current_player">${player}</span>'s Turn!`;
   }
 }

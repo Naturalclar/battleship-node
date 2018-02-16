@@ -22,4 +22,15 @@ class Store {
   getPlayer2() {
     return this.player2;
   }
+
+  setTurn(turn) {
+    this.turn = turn;
+  }
+
+  getCurrentPlayer() {
+    if (this.turn) {
+      return this.player1;
+    }
+    return this.player2;
+  }
 }
