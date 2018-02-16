@@ -27,15 +27,20 @@ class Player {
     this.map = map;
   }
 
-  getMap() {
-    return this.map;
+  getMap(x, y) {
+    return this.map[x][y];
   }
 
-  setState(state) {
-    this.state = state;
+  setState(x, y, state) {
+    this.state[x][y] = state;
+  }
+
+  getStateAtPos(x, y) {
+    return this.state[x][y];
   }
 
   getState() {
     return this.state;
   }
+
 }

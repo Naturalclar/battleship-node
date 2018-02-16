@@ -1,8 +1,7 @@
 /* global */
 
 class SetupScreen {
-  constructor(store, game, el, player) {
-    this.store = store;
+  constructor(player, game, el) {
     this.game = game;
     this.el = el;
     this.player = player;
@@ -11,6 +10,6 @@ class SetupScreen {
 
   render() {
     const container = document.createElement('div');
-    container.className = 'setUp';
+    container.className = 'setup';
   }
 }

@@ -1,5 +1,3 @@
-/* global PLAYER1 PLAYER2 */
-
 class InitialScreen {
   /**
    * InitialScreen
@@ -28,8 +26,8 @@ class InitialScreen {
     e.preventDefault();
     const player1 = document.getElementById('player1');
     const player2 = document.getElementById('player2');
-    this.store.setName(player1.value, PLAYER1);
-    this.store.setName(player2.value, PLAYER2);
+    this.store.player1.setName(player1.value);
+    this.store.player2.setName(player2.value);
     this.game.startGame();
   }
 
@@ -60,7 +58,7 @@ class InitialScreen {
     const input1 = document.createElement('input');
     input1.id = 'player1';
     input1.type = 'text';
-    input1.defaultValue = this.store.getName(PLAYER1);
+    input1.defaultValue = this.store.player1.getName();
     label1.appendChild(input1);
     form.appendChild(label1);
 
@@ -71,7 +69,7 @@ class InitialScreen {
     const input2 = document.createElement('input');
     input2.id = 'player2';
     input2.type = 'text';
-    input2.defaultValue = this.store.getName(PLAYER2);
+    input2.defaultValue = this.store.player2.getName();
     label2.appendChild(input2);
     form.appendChild(label2);
 

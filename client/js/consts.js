@@ -1,5 +1,3 @@
-const PLAYER1 = 0;
-const PLAYER2 = 1;
 const SIZE = 10;
 const GRID_SIZE = 32;
 

@@ -1,5 +1,4 @@
 /* global SIZE GRID_SIZE HIT MISS COLOR */
-/* exported Board */
 
 /**
  * create2DArray(size)
@@ -27,14 +26,12 @@ function setMessage(message) {
 class Board {
   /**
    * Board
-   * @param {string} id - id of the DOM element
    */
-  constructor() {
+  constructor(player) {
+    this.player = player;
     this.el = document.createElement('div');
     this.el.className = 'board';
     this.el.innerHTML = '';
-    this.map = create2DArray(SIZE);
-    this.state = create2DArray(SIZE);
     this.x = 0;
     this.y = 0;
     this.init();
@@ -101,18 +98,18 @@ class Board {
    */
   onClick(event) {
     const { x, y } = this.getMousePos(event);
-    if (this.state[x][y] !== 0) {
+    if (this.player.getStateAtPos(x, y) !== 0) {
       setMessage('Already Taken!');
       return;
     }
-    if (this.map[x][y] === HIT) {
-      this.state[x][y] = HIT;
+    if (this.player.getMap(x, y) === HIT) {
+      this.player.setState(x, y, HIT);
       setMessage('Hit!');
     } else {
-      this.state[x][y] = MISS;
+      this.player.setState(x, y, MISS);
       setMessage('Miss!');
     }
-    this.drawTile(x, y, COLOR[this.state[x][y]]);
+    this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
   }
 
   /**
@@ -159,7 +156,7 @@ class Board {
   */
   drawGrid() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.state.forEach((val, curX) => {
+    this.player.getState().forEach((val, curX) => {
       val.forEach((state, curY) => {
         this.ctx.fillStyle = COLOR[state];
         this.ctx.fillRect(curX * GRID_SIZE, curY * GRID_SIZE, GRID_SIZE, GRID_SIZE);

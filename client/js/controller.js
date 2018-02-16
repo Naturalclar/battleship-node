@@ -1,4 +1,4 @@
-/* global PlayerBoard PLAYER1 PLAYER2 */
+/* global PlayerBoard */
 
 class Controller {
   constructor(store, game, el) {
@@ -22,8 +22,8 @@ class Controller {
     message.id = 'message';
     const container = document.createElement('div');
     container.className = 'game__container';
-    const player1 = new PlayerBoard(this.store.getName(PLAYER1));
-    const player2 = new PlayerBoard(this.store.getName(PLAYER2));
+    const player1 = new PlayerBoard(this.store.player1);
+    const player2 = new PlayerBoard(this.store.player2);
 
     container.appendChild(player1.getEl());
     container.appendChild(player2.getEl());

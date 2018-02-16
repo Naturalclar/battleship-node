@@ -1,11 +1,11 @@
 /* global Board */
 
 class PlayerBoard {
-  constructor(name) {
+  constructor(player) {
     this.el = document.createElement('div');
     this.el.className = 'game__player';
     this.el.innerHTML = '';
-    this.name = name;
+    this.player = player;
     this.render();
   }
 
@@ -15,9 +15,9 @@ class PlayerBoard {
 
   render() {
     const header = document.createElement('h3');
-    const headerText = document.createTextNode(`${this.name}'s Board`);
+    const headerText = document.createTextNode(`${this.player.getName()}'s Board`);
     header.appendChild(headerText);
-    const board = new Board();
+    const board = new Board(this.player);
 
     this.el.appendChild(header);
     this.el.appendChild(board.getEl());
