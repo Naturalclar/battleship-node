@@ -43,17 +43,56 @@ class Board {
    * @param {string} id - id of the DOM element
    */
   constructor(id) {
-    this.canvas = document.getElementById(id);
-    this.ctx = this.canvas.getContext('2d');
+    this.el = document.getElementById(id);
+    this.el.innerHTML = '';
     this.map = create2DArray(SIZE);
     this.state = create2DArray(SIZE);
     this.x = 0;
     this.y = 0;
+    this.init();
+  }
+
+  init() {
+    // Create columns label
+    this.columns = document.createElement('ul');
+    this.columns.classList.add('board__columns');
+
+    // Create rows label
+    this.rows = document.createElement('ul');
+    this.rows.classList.add('board__rows');
+
+    // Set Columns Label to be 1 - 10, Set Rows Label to be A-J
+    new Array(SIZE).fill(0).forEach((val, index) => {
+      const column = document.createElement('li');
+      const columnLabel = document.createTextNode((index + 1).toFixed());
+      column.appendChild(columnLabel);
+      const row = document.createElement('li');
+      const rowLabel = document.createTextNode(String.fromCharCode(index + 65));
+      row.appendChild(rowLabel);
+      this.columns.appendChild(column);
+      this.rows.appendChild(row);
+    });
+
+    this.el.appendChild(this.columns);
+    this.el.appendChild(this.rows);
+
+    // Create Canvas
+    this.canvas = document.createElement('canvas');
+    this.canvas.classList.add('board__canvas');
+    this.canvas.width = 321;
+    this.canvas.height = 321;
+    this.el.appendChild(this.canvas);
+    this.ctx = this.canvas.getContext('2d');
+
+    // Set Event Listeners
     this.canvas.addEventListener('mousemove', this.onMouseMove.bind(this), false);
     this.canvas.addEventListener('mouseout', this.onMouseOut.bind(this), false);
     this.canvas.addEventListener('click', this.onClick.bind(this), false);
+
+    // Render Board
     this.drawGrid();
   }
+
   /**
    * getMousePos()
    * - Get the current position of the mouse

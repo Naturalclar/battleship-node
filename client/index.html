@@ -8,72 +8,22 @@
   </head>
   <body>
     <header>Simple Battleship</header>
-    <div class="container">
+    <div class="game">
       <h2 id="display-turn"></h2>
       <p id="message"></p>
-      <div class="game">
-        <div class="board">
+      <div class="game__container">
+        <div class="game__player">
           <h3>Player 1's Board</h3>
-          <div class="grid">
-            <ul class="columns-list">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>10</li>
-            </ul>
-            <ul class="rows-list">
-              <li>A</li>
-              <li>B</li>
-              <li>C</li>
-              <li>D</li>
-              <li>E</li>
-              <li>F</li>
-              <li>G</li>
-              <li>H</li>
-              <li>I</li>
-              <li>J</li>
-            </ul>
-            <canvas id="canvas-grid1" width="321" height="321">Your Browser does not support canvas.</canvas>
+          <div id="player1" class="board">
           </div>
         </div>
-        <div class="board">
+        <div class="game__player">
           <h3>Player 2's Board</h3>
-          <div class="grid">
-            <ul class="columns-list">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>10</li>
-            </ul>
-            <ul class="rows-list">
-              <li>A</li>
-              <li>B</li>
-              <li>C</li>
-              <li>D</li>
-              <li>E</li>
-              <li>F</li>
-              <li>G</li>
-              <li>H</li>
-              <li>I</li>
-              <li>J</li>
-            </ul>
-            <canvas id="canvas-grid2" width="321" height="321">Your Browser does not support canvas.</canvas>
+          <div id="player2" class="board">
           </div>
         </div>
       </div>
-      <button>Start Game!</button>
+      <button id="start">Start Game!</button>
     </div>
     <footer>Jesse Katsumata &copy;2017</footer>
   </body>

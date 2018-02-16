@@ -1,0 +1,22 @@
+.game {
+  padding: 64px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game__container {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.game__current_player {
+  color: red;
+}
+
+.game__player {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+}

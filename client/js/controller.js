@@ -2,11 +2,11 @@
 /* global Board */
 
 class Controller {
-  constructor() {
+  init() {
     this.turn = Math.random() < 0.5;
     // if true, it's player1's move
-    this.player1 = new Board('canvas-grid1');
-    this.player2 = new Board('canvas-grid2');
+    this.player1 = new Board('player1');
+    this.player2 = new Board('player2');
     this.displayTurn();
   }
 
@@ -16,6 +16,6 @@ class Controller {
     if (!this.turn) {
       player = 'Player 2';
     }
-    turn.innerHTML = `It's <span class="name">${player}</span>'s Turn!`;
+    turn.innerHTML = `It's <span class="game__current_player">${player}</span>'s Turn!`;
   }
 }
