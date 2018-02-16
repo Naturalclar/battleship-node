@@ -1,4 +1,4 @@
-/* global SIZE GRID_SIZE HIT MISS COLOR */
+/* global SIZE GRID_SIZE gridState ships COLOR */
 
 /**
  * create2DArray(size)
@@ -61,13 +61,12 @@ class Board {
     // Create Canvas
     this.canvas = document.createElement('canvas');
     this.canvas.classList.add('board__canvas');
-    this.canvas.width = 321;
-    this.canvas.height = 321;
+    this.canvas.width = (GRID_SIZE * 10) + 1;
+    this.canvas.height = (GRID_SIZE * 10) + 1;
     this.el.appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d');
 
-
-    // disable board if its your turn, else, set event listeners
+    // Disable board if its your turn, else, set event listeners
     if (this.isYourTurn()) {
       const disable = document.createElement('div');
       disable.className = 'board-disable';
@@ -110,11 +109,25 @@ class Board {
       this.store.setMessage('Already Taken!');
       return;
     }
-    if (this.player.getMap(x, y) === HIT) {
-      this.player.setState(x, y, HIT);
+    if (this.player.getMap(x, y) !== ships.EMPTY) {
+      /**
+      * @todo - handle win event on win condition
+      * if (win condition) {
+      *   this.game.setWinner(this.player);
+      *   return;
+      * }
+      */
+      /**
+       * @todo - handle sink event on sink condition
+        if (sink condition) {
+          this.store.setMessage(`${Shipname} sunk!`);
+          change all sunk tile to gray
+        }
+      */
+      this.player.setState(x, y, gridState.HIT);
       this.store.setMessage('Hit!');
     } else {
-      this.player.setState(x, y, MISS);
+      this.player.setState(x, y, gridState.MISS);
       this.store.setMessage('Miss!');
       this.store.setTurn(!this.store.getTurn());
       this.game.reRender();

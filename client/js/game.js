@@ -1,4 +1,4 @@
-/* global InitialScreen Controller */
+/* global InitialScreen Controller WinnerScreen */
 
 class Game {
   constructor(store) {
@@ -15,6 +15,10 @@ class Game {
   startGame() {
     this.el.innerHTML = '';
     this.state = new Controller(this.store, this, this.el);
+  }
+
+  setWinner(player) {
+    this.state = new WinnerScreen(this.store, this, this.el, player);
   }
 
   reRender() {

@@ -9,6 +9,7 @@ body {
 }
 
 header, footer {
+  z-index: 100;
   position: fixed;
   background: black;
   color: white;

@@ -8,7 +8,13 @@
   color: red;
 }
 
+.game__displayname {
+  word-wrap: break-word;
+  max-width: 80%;
+}
+
 .game__player {
+  max-width: 70%;
   padding: 0 24px;
   display: flex;
   flex-direction: column;

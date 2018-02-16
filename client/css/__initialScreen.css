@@ -15,11 +15,11 @@
   flex-direction: column;
 }
 
-.init__form label {
+.init__form-item {
   padding: 16px 0;
 }
 
-.init__form button {
+.init__button {
   margin: 16px 0;
   padding: 1rem;
   border-radius: 16px;

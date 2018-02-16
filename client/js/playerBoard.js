@@ -17,6 +17,7 @@ class PlayerBoard {
   render() {
     this.el.innerHTML = '';
     const header = document.createElement('h3');
+    header.className = 'game__displayname';
     const headerText = document.createTextNode(`${this.player.getName()}'s Board`);
     header.appendChild(headerText);
     const board = new Board(this.store, this.game, this.player);

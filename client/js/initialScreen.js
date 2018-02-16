@@ -55,6 +55,7 @@ class InitialScreen {
     const label1 = document.createElement('label');
     const label1Text = document.createTextNode('Player 1: ');
     label1.appendChild(label1Text);
+    label1.className = 'init__form-item';
     const input1 = document.createElement('input');
     input1.id = 'player1';
     input1.type = 'text';
@@ -66,6 +67,7 @@ class InitialScreen {
     const label2 = document.createElement('label');
     const label2Text = document.createTextNode('Player 2: ');
     label2.appendChild(label2Text);
+    label2.className = 'init__form-item';
     const input2 = document.createElement('input');
     input2.id = 'player2';
     input2.type = 'text';
@@ -76,6 +78,7 @@ class InitialScreen {
     // create game start button
     const button = document.createElement('button');
     const buttonText = document.createTextNode('Start Game!');
+    button.className = 'init__button';
     button.appendChild(buttonText);
     form.appendChild(button);
 
