@@ -30,7 +30,9 @@ class Board {
     this.x = 0;
     this.y = 0;
     this.canvas.addEventListener('mousemove', this.onMouseMove.bind(this), false);
+    this.canvas.addEventListener('mouseout', this.onMouseOut.bind(this), false);
     this.canvas.addEventListener('click', this.onClick.bind(this), false);
+    this.drawGrid();
   }
   /**
    * getMousePos()
@@ -44,7 +46,7 @@ class Board {
   }
 
   /**
-   * onClick
+   * onClick()
    */
   onClick(event) {
     const { x, y } = this.getMousePos(event);
@@ -52,6 +54,14 @@ class Board {
     this.state[x][y] = 2;
     this.drawTile(x, y, COLOR[this.state[x][y]]);
     console.log(this.state);
+  }
+
+  /**
+   * onMouseOut()
+   * - redraw grid when mouse leaves
+   */
+  onMouseOut() {
+    this.drawGrid();
   }
 
   /**
