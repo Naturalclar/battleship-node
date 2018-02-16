@@ -1,4 +1,5 @@
 .board {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(11, 32px);
   grid-template-rows: repeat(11,32px);
@@ -8,7 +9,11 @@
 }
 
 .board-disable {
-  background: rgba(0,0,0,0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  cursor: not-allowed;
 }
 
 .board__columns,
@@ -43,4 +48,5 @@
 
 .board__canvas {
   grid-area: 2 / 2 / 12 / 12;
+  cursor: pointer;
 }

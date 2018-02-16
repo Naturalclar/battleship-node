@@ -23,21 +23,17 @@ class Board {
     this.player = player;
     this.el = document.createElement('div');
     this.el.className = 'board';
-    this.el.innerHTML = '';
     this.x = 0;
     this.y = 0;
-    this.init();
+    this.render();
   }
 
   getEl() {
     return this.el;
   }
 
-  init() {
-    // disable board if its your turn
-    if (this.isYourturn()) {
-      this.el.classList.add('board-disable');
-    }
+  render() {
+    this.el.innerHTML = '';
 
     // Create columns label
     this.columns = document.createElement('ul');
@@ -70,10 +66,17 @@ class Board {
     this.el.appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d');
 
-    // Set Event Listeners
-    this.canvas.addEventListener('mousemove', this.onMouseMove.bind(this), false);
-    this.canvas.addEventListener('mouseout', this.onMouseOut.bind(this), false);
-    this.canvas.addEventListener('click', this.onClick.bind(this), false);
+
+    // disable board if its your turn, else, set event listeners
+    if (this.isYourTurn()) {
+      const disable = document.createElement('div');
+      disable.className = 'board-disable';
+      this.el.appendChild(disable);
+    } else {
+      this.canvas.addEventListener('mousemove', this.onMouseMove.bind(this), false);
+      this.canvas.addEventListener('mouseout', this.onMouseOut.bind(this), false);
+      this.canvas.addEventListener('click', this.onClick.bind(this), false);
+    }
 
     // Render Board
     this.drawGrid();
@@ -94,7 +97,7 @@ class Board {
    * isYourTurn()
    * returns true if it is this player's turn
    */
-  isYourturn() {
+  isYourTurn() {
     return this.store.getCurrentPlayer() === this.player;
   }
 
@@ -102,26 +105,21 @@ class Board {
    * onClick()
    */
   onClick(event) {
-    if (!this.isYourturn()) {
-      const { x, y } = this.getMousePos(event);
-      if (this.player.getStateAtPos(x, y) !== 0) {
-        this.store.setMessage('Already Taken!');
-        return;
-      }
-      if (this.player.getMap(x, y) === HIT) {
-        this.player.setState(x, y, HIT);
-        this.store.setMessage('Hit!');
-      } else {
-        this.player.setState(x, y, MISS);
-        this.store.setMessage('Miss!');
-        this.store.setTurn(!this.store.getTurn());
-        this.game.reRender();
-      }
-      this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
+    const { x, y } = this.getMousePos(event);
+    if (this.player.getStateAtPos(x, y) !== 0) {
+      this.store.setMessage('Already Taken!');
+      return;
+    }
+    if (this.player.getMap(x, y) === HIT) {
+      this.player.setState(x, y, HIT);
+      this.store.setMessage('Hit!');
     } else {
-      this.store.setMessage('It\'s not your turn!');
+      this.player.setState(x, y, MISS);
+      this.store.setMessage('Miss!');
+      this.store.setTurn(!this.store.getTurn());
       this.game.reRender();
     }
+    this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
   }
 
   /**

@@ -7,7 +7,6 @@ class PlayerBoard {
     this.player = player;
     this.el = document.createElement('div');
     this.el.className = 'game__player';
-    this.el.innerHTML = '';
     this.render();
   }
 
@@ -16,6 +15,7 @@ class PlayerBoard {
   }
 
   render() {
+    this.el.innerHTML = '';
     const header = document.createElement('h3');
     const headerText = document.createTextNode(`${this.player.getName()}'s Board`);
     header.appendChild(headerText);
