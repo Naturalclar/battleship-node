@@ -4,7 +4,7 @@ A Simple In-Browser Battleship Game.
 
 This application is made without use of frameworks or external libraries.
 
-You can see the demo [here](simple-battleship-fwhhmngwzh.now.sh)
+You can see the demo app running [here](https://nc-simple-battleship.now.sh).
 
 ## Getting Started
 
