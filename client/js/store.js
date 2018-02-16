@@ -1,27 +1,19 @@
-
+/* global Player PLAYER1 PLAYER2 */
 class Store {
   constructor() {
-    this.player1 = 'Bob';
-    this.player2 = 'Charlie';
-    this.start = false;
+    this.player = {};
+    this.player[PLAYER1] = new Player('Bob');
+    this.player[PLAYER2] = new Player('Charlie');
     this.end = false;
     this.turn = true;
   }
 
-  setPlayer1(name) {
-    this.player1 = name;
+  setName(name, id) {
+    this.player[id].setName(name);
   }
 
-  setPlayer2(name) {
-    this.player2 = name;
-  }
-
-  getPlayer1() {
-    return this.player1;
-  }
-
-  getPlayer2() {
-    return this.player2;
+  getName(id) {
+    return this.player[id].getName();
   }
 
   setTurn(turn) {
@@ -30,8 +22,8 @@ class Store {
 
   getCurrentPlayer() {
     if (this.turn) {
-      return this.player1;
+      return this.player[PLAYER1].getName();
     }
-    return this.player2;
+    return this.player[PLAYER2].getName();
   }
 }

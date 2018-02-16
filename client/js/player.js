@@ -1,27 +1,41 @@
-/* global document */
-/* global Board */
-/* eslint-disable no-unused-vars */
+/* global SIZE */
+
+function initMap(size) {
+  const array = new Array(size).fill(0);
+  array.forEach((val, index) => {
+    array[index] = new Array(size).fill(0);
+  });
+  return array;
+}
 
 class Player {
   constructor(name) {
-    this.el = document.createElement('div');
-    this.el.className = 'game__player';
-    this.el.innerHTML = '';
     this.name = name;
-    this.render();
+    this.map = initMap(SIZE);
+    this.state = initMap(SIZE);
   }
 
-  getEl() {
-    return this.el;
+  setName(name) {
+    this.name = name;
   }
 
-  render() {
-    const header = document.createElement('h3');
-    const headerText = document.createTextNode(`${this.name}'s Board`);
-    header.appendChild(headerText);
-    const board = new Board();
+  getName() {
+    return this.name;
+  }
 
-    this.el.appendChild(header);
-    this.el.appendChild(board.getEl());
+  setMap(map) {
+    this.map = map;
+  }
+
+  getMap() {
+    return this.map;
+  }
+
+  setState(state) {
+    this.state = state;
+  }
+
+  getState() {
+    return this.state;
   }
 }

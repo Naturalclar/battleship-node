@@ -1,6 +1,4 @@
-/* global document */
-/* global InitialScreen */
-/* global Controller */
+/* global InitialScreen Controller */
 
 class Game {
   constructor(store) {

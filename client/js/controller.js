@@ -1,6 +1,4 @@
-/* global document */
-/* global Player */
-/* eslint-disable no-unused-vars */
+/* global PlayerBoard PLAYER1 PLAYER2 */
 
 class Controller {
   constructor(store, game, el) {
@@ -24,8 +22,8 @@ class Controller {
     message.id = 'message';
     const container = document.createElement('div');
     container.className = 'game__container';
-    const player1 = new Player(this.store.getPlayer1());
-    const player2 = new Player(this.store.getPlayer2());
+    const player1 = new PlayerBoard(this.store.getName(PLAYER1));
+    const player2 = new PlayerBoard(this.store.getName(PLAYER2));
 
     container.appendChild(player1.getEl());
     container.appendChild(player2.getEl());
