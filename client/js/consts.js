@@ -6,7 +6,7 @@ const gameState = Object.freeze({
   SETUP: 1,
   PLAY: 2,
   WIN: 3,
-})
+});
 
 const gridState = Object.freeze({
   EMPTY: 0,
@@ -36,7 +36,7 @@ const shipLength = Object.freeze({
   3: 3,
   4: 3,
   5: 2,
-})
+});
 
 const COLOR = Object.freeze({
   0: 'white', // empty

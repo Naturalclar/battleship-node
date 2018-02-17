@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
 const http = require('http');
 const fs = require('fs');
 const path = require('path');

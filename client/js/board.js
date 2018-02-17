@@ -1,18 +1,4 @@
 /* global SIZE GRID_SIZE gridState ships shipLength COLOR gameState */
-/* eslint-disable no-plusplus */
-
-/**
- * create2DArray(size)
- * @param {number} size
- * Initialize an 2D array of given size, filled with 0
- */
-function create2DArray(size) {
-  const array = new Array(size).fill(0);
-  array.forEach((val, index) => {
-    array[index] = new Array(size).fill(0);
-  });
-  return array;
-}
 
 class Board {
   /**
@@ -85,8 +71,8 @@ class Board {
    * isValidSpace(x, y)
    * Checks weather the ship you're trying to set up is in a valid space.
    * returns true if the ship will make no collisions with the wall or other ships
-   * @param {number} x 
-   * @param {number} y 
+   * @param {number} x
+   * @param {number} y
    */
   isValidSpace(x, y) {
     const length = this.getShipLength();
@@ -94,7 +80,7 @@ class Board {
       if (x + length > SIZE) {
         return false;
       }
-      for (let i = 0; i < length; i++) {
+      for (let i = 0; i < length; i += 1) {
         if (this.player.getMapAtPos(x + i, y) !== ships.EMPTY) {
           return false;
         }
@@ -103,7 +89,7 @@ class Board {
     } else if (y + length > SIZE) {
       return false;
     }
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < length; i += 1) {
       if (this.player.getMapAtPos(x, y + i) !== ships.EMPTY) {
         return false;
       }
@@ -122,11 +108,11 @@ class Board {
     if (this.player.getMapAtPos(x, y) === ships.EMPTY) {
       // if rotated, place it horizontally
       if (this.isRotated()) {
-        for (let i = 0; i < shipLength[stage]; i++) {
+        for (let i = 0; i < shipLength[stage]; i += 1) {
           this.player.setMap(x + i, y, stage);
         }
       } else {
-        for (let i = 0; i < shipLength[stage]; i++) {
+        for (let i = 0; i < shipLength[stage]; i += 1) {
           this.player.setMap(x, y + i, stage);
         }
       }
@@ -187,7 +173,6 @@ class Board {
     }
     this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
     this.game.reRender();
-    console.log(this.player.getMap());
   }
 
   /**
@@ -215,7 +200,7 @@ class Board {
    * onMouseMoveSetUp(event)
    * displays where the ship will be placed
    * @todo display in red if the space is invalid
-   * @param {event} event 
+   * @param {event} event
    */
   onMouseMoveSetUp(event) {
     const { x, y } = this.getMousePos(event);

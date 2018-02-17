@@ -10,7 +10,7 @@ class WinnerScreen {
     this.game.init();
   }
 
-  /** 
+  /**
    * render()
    *  rendering the InitialScreen
   */
@@ -31,9 +31,9 @@ class WinnerScreen {
     button.className = 'init__button';
     button.onclick = () => {
       this.handleClick();
-    }
+    };
     button.appendChild(buttonText);
-    
+
     container.appendChild(button);
 
     this.el.appendChild(container);

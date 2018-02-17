@@ -1,13 +1,14 @@
 {
   "name": "battleship-node",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple battleship made with node.js",
   "main": "index.js",
   "author": "Jesse Katsumata",
   "license": "MIT",
   "scripts": {
     "start": "node ./server/index.js",
-    "serve": "serve ./client"
+    "serve": "serve ./client",
+    "lint": "eslint ./client"
   },
   "devDependencies": {
     "eslint": "^4.17.0",

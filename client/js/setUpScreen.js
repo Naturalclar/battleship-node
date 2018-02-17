@@ -1,4 +1,4 @@
-/* global */
+/* global ships Board */
 
 class SetUpScreen {
   constructor(store, game, el, player) {
@@ -13,7 +13,7 @@ class SetUpScreen {
     this.player.setSetUpRotate(!this.player.getSetUpRotate());
   }
 
-  /** 
+  /**
    * handleClick()
    * - if Both player's set up is complete, start the game
    * - if Player 2 has not set up, start setup screen for player 2
@@ -22,8 +22,7 @@ class SetUpScreen {
     this.player.setSetUpComplete(true);
     if (!this.store.player2.getSetUpComplete()) {
       this.game.startSetUp(this.store.player2);
-    }
-    else {
+    } else {
       this.game.startGame();
     }
   }
@@ -36,18 +35,18 @@ class SetUpScreen {
     // Display title
     const title = document.createElement('h2');
     const subTitle = document.createElement('p');
-    if (this.player.getSetUpComplete()){
-      const titleText = document.createTextNode(`Setup Complete!`);
-      const subTitleText = document.createTextNode(`Press Done Button`);
+    if (this.player.getSetUpComplete()) {
+      const titleText = document.createTextNode('Setup Complete!');
+      const subTitleText = document.createTextNode('Press Done Button');
       title.appendChild(titleText);
       subTitle.appendChild(subTitleText);
     } else {
       const titleText = document.createTextNode(`${this.player.getName()} is Setting up...`);
-      const subTitleText = document.createTextNode(`Place your ${ships[this.player.getSetUpStage()]}`)
+      const subTitleText = document.createTextNode(`Place your ${ships[this.player.getSetUpStage()]}`);
       title.appendChild(titleText);
-      subTitle.appendChild(subTitleText);      
+      subTitle.appendChild(subTitleText);
     }
-    
+
     container.appendChild(title);
     container.appendChild(subTitle);
 
@@ -67,22 +66,22 @@ class SetUpScreen {
     rotateButton.appendChild(rotateButtonText);
     rotateButton.onclick = () => {
       this.handleRotateClick();
-    }
+    };
     buttons.appendChild(rotateButton);
 
     // display next or done button
     const nextButton = document.createElement('button');
     const nextButtonText = document.createTextNode('Done');
     nextButton.appendChild(nextButtonText);
-    if (this.player.getSetUpComplete()){
+    if (this.player.getSetUpComplete()) {
       nextButton.onclick = () => {
         this.handleClick();
-      }  
+      };
     } else {
       nextButton.classList.add('setup__button-disabled');
     }
     buttons.appendChild(nextButton);
-    
+
     this.el.appendChild(container);
   }
 }

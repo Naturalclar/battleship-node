@@ -1,4 +1,4 @@
-/* global Player PLAYER1 PLAYER2 */
+/* global Player PLAYER1 PLAYER2 gameState */
 class Store {
   constructor() {
     this.player1 = new Player('Bob');

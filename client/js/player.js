@@ -1,4 +1,4 @@
-/* global SIZE */
+/* global SIZE shipLength gridState */
 
 function initMap(size) {
   const array = new Array(size).fill(0);
@@ -14,12 +14,12 @@ class Player {
     this.map = initMap(SIZE);
     this.state = initMap(SIZE);
 
-    //state for setup
+    // state for setup
     this.setUpComplete = false;
     this.setUpRotate = false;
     this.setUpStage = 1;
 
-    //state for game
+    // state for game
     this.hitCount = new Array(6).fill(0);
     this.sinkCount = 0;
   }
@@ -29,7 +29,7 @@ class Player {
    * called when a ship is hit
    * checks weather the ship sank or not
    * if ship sank, change the state to sank, and return true
-   * @param {number} index 
+   * @param {number} index
    */
   checkSink(index) {
     return this.hitCount[index] === shipLength[index];
@@ -42,23 +42,23 @@ class Player {
    * type of ship that got hit
    */
   incrementHit(index) {
-    this.hitCount[index]++;
+    this.hitCount[index] += 1;
   }
 
-  /** 
+  /**
    * incrementSink()
    * increment the sink count
   */
   incrementSink() {
-    this.sinkCount++;
+    this.sinkCount += 1;
   }
 
-  /** 
+  /**
    * checkWin()
    * returns true if sinkCount is 5, congratulations!
   */
   checkWin() {
-    return this.sinkCount === 5
+    return this.sinkCount === 5;
   }
 
   /**
@@ -66,8 +66,8 @@ class Player {
    * iterate through state and change the value to SUNK
    */
   applySink(index) {
-    for (let i = 0; i < SIZE; i++) {
-      for (let j = 0; j < SIZE; j++) {
+    for (let i = 0; i < SIZE; i += 1) {
+      for (let j = 0; j < SIZE; j += 1) {
         if (this.map[i][j] === index) {
           this.state[i][j] = gridState.SUNK;
         }
@@ -108,7 +108,7 @@ class Player {
     return this.name;
   }
 
-  setMap(x,y, val) {
+  setMap(x, y, val) {
     this.map[x][y] = val;
   }
 
@@ -131,8 +131,6 @@ class Player {
   getState() {
     return this.state;
   }
-
-
 
 
   clear() {
