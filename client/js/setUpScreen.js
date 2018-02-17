@@ -9,6 +9,10 @@ class SetUpScreen {
     this.render();
   }
 
+  /**
+   * handleRotateClick()
+   * Click to rotate the ship you are about to place down
+  */
   handleRotateClick() {
     this.player.setSetUpRotate(!this.player.getSetUpRotate());
   }

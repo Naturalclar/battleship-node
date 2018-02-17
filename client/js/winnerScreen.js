@@ -6,6 +6,10 @@ class WinnerScreen {
     this.render();
   }
 
+  /** 
+   * handleClick()
+   * Click to restart the game.
+   */
   handleClick() {
     this.game.init();
   }

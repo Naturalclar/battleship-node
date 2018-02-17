@@ -1,6 +1,4 @@
-/* global window */
-/* global Store */
-/* global Game */
+/* global window Store Game */
 
 window.onload = () => {
   const store = new Store();
