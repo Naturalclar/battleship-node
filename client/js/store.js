@@ -4,8 +4,6 @@ class Store {
     this.player1 = new Player('Bob');
     this.player2 = new Player('Charlie');
     this.message = '';
-    this.setUp = false;
-    this.end = false;
     this.turn = true;
     this.gameState = gameState.INIT;
   }

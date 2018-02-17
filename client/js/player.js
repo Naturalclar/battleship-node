@@ -28,9 +28,9 @@ class Player {
    * set everything to back to initial state
    */
   clear() {
-    this.state = initMap(SIZE);
     this.map = initMap(SIZE);
-    this.setupComplete = false;
+    this.state = initMap(SIZE);
+    this.setUpComplete = false;
     this.setUpRotate = false;
     this.setUpStage = 1;
     this.hitCount = new Array(6).fill(0);
