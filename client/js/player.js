@@ -24,6 +24,19 @@ class Player {
     this.sinkCount = 0;
   }
 
+  /** clear()
+   * set everything to back to initial state
+   */
+  clear() {
+    this.state = initMap(SIZE);
+    this.map = initMap(SIZE);
+    this.setupComplete = false;
+    this.setUpRotate = false;
+    this.setUpStage = 1;
+    this.hitCount = new Array(6).fill(0);
+    this.sinkCount = 0;
+  }
+
   /**
    * checkSink(index)
    * called when a ship is hit
@@ -130,12 +143,5 @@ class Player {
 
   getState() {
     return this.state;
-  }
-
-
-  clear() {
-    this.state = initMap(SIZE);
-    this.map = initMap(SIZE);
-    this.setup = false;
   }
 }
