@@ -1,8 +1,10 @@
-# NodeJS Battle Ship
+# HTML Battle Ship
 
 A Simple In-Browser Battleship Game.
 
-This application is made without use of frameworks or external libraries.
+This application is made with HTML, CSS, JS, without use of other frameworks or external libraries.
+
+NodeJS is used to serve the application, however, most of the functions are done on the client's side.
 
 You can see the demo app running [here](https://nc-simple-battleship.now.sh).
 
