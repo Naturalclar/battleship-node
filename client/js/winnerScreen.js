@@ -6,6 +6,10 @@ class WinnerScreen {
     this.render();
   }
 
+  handleClick() {
+    this.game.init();
+  }
+
   /** 
    * render()
    *  rendering the InitialScreen
@@ -26,7 +30,7 @@ class WinnerScreen {
     const buttonText = document.createTextNode('Play again!');
     button.className = 'init__button';
     button.onclick = () => {
-      this.game.init();
+      this.handleClick();
     }
     button.appendChild(buttonText);
     

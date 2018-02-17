@@ -27,7 +27,7 @@ class InitialScreen {
     const player2 = document.getElementById('player2');
     this.store.player1.setName(player1.value);
     this.store.player2.setName(player2.value);
-    this.game.startGame();
+    this.game.startSetUp(this.store.player1);
   }
 
   /**

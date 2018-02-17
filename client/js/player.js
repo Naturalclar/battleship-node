@@ -13,7 +13,39 @@ class Player {
     this.name = name;
     this.map = initMap(SIZE);
     this.state = initMap(SIZE);
+
+    //state for setup
+    this.setUpComplete = false;
+    this.setUpRotate = false;
+    this.setUpStage = 1;
+
+    //state for game
   }
+
+  getSetUpComplete() {
+    return this.setUpComplete;
+  }
+
+  getSetUpRotate() {
+    return this.setUpRotate;
+  }
+
+  getSetUpStage() {
+    return this.setUpStage;
+  }
+
+  setSetUpComplete(val) {
+    this.setUpComplete = val;
+  }
+
+  setSetUpRotate(val) {
+    this.setUpRotate = val;
+  }
+
+  incrementSetUpStage(val) {
+    this.setUpStage = this.setUpStage + 1;
+  }
+
 
   setName(name) {
     this.name = name;
@@ -23,11 +55,15 @@ class Player {
     return this.name;
   }
 
-  setMap(map) {
-    this.map = map;
+  setMap(x,y, val) {
+    this.map[x][y] = val;
   }
 
-  getMap(x, y) {
+  getMap() {
+    return this.map;
+  }
+
+  getMapAtPos(x, y) {
     return this.map[x][y];
   }
 
@@ -43,7 +79,12 @@ class Player {
     return this.state;
   }
 
+
+
+
   clear() {
     this.state = initMap(SIZE);
+    this.map = initMap(SIZE);
+    this.setup = false;
   }
 }

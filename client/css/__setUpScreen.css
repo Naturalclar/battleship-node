@@ -1,0 +1,14 @@
+.setup__buttons { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setup__button-disabled {
+  cursor: not-allowed;
+  background: #ccc;
+}
+
+.setup_button-disabled:hover {
+  background: #ccc;
+}

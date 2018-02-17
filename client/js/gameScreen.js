@@ -1,6 +1,6 @@
 /* global PlayerBoard */
 
-class Controller {
+class GameScreen {
   constructor(store, game, el) {
     this.store = store;
     this.game = game;
@@ -11,7 +11,6 @@ class Controller {
   init() {
     this.store.setTurn(Math.random() < 0.5);
     // if true, it's player1's move
-    this.store.clearState();
     this.render();
   }
 
