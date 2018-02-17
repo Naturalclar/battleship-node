@@ -29,6 +29,10 @@ class Board {
     this.render();
   }
 
+  /**
+   * getEl()
+   * returns the HTMLElement for this board
+  */
   getEl() {
     return this.el;
   }
@@ -77,6 +81,13 @@ class Board {
     return shipLength[stage];
   }
 
+  /**
+   * isValidSpace(x, y)
+   * Checks weather the ship you're trying to set up is in a valid space.
+   * returns true if the ship will make no collisions with the wall or other ships
+   * @param {number} x 
+   * @param {number} y 
+   */
   isValidSpace(x, y) {
     const length = this.getShipLength();
     if (this.isRotated()) {
@@ -110,7 +121,7 @@ class Board {
     // if valid, place the ship
     if (this.player.getMapAtPos(x, y) === ships.EMPTY) {
       // if rotated, place it horizontally
-      if (this.player.getSetUpRotate()) {
+      if (this.isRotated()) {
         for (let i = 0; i < shipLength[stage]; i++) {
           this.player.setMap(x + i, y, stage);
         }
@@ -119,13 +130,14 @@ class Board {
           this.player.setMap(x, y + i, stage);
         }
       }
+
+      // if 5 ships are placed, enable Done Button.
       this.player.incrementSetUpStage();
       if (this.player.getSetUpStage() > 5) {
         this.player.setSetUpComplete(true);
-        this.game.reRender();
       }
     }
-    this.drawGrid();
+    this.game.reRender();
   }
 
   /**
@@ -137,7 +149,8 @@ class Board {
       this.store.setMessage('Already Taken!');
       return;
     }
-    if (this.player.getMapAtPos(x, y) !== ships.EMPTY) {
+    const target = this.player.getMapAtPos(x, y);
+    if (target !== ships.EMPTY) {
       /**
       * @todo - handle win event on win condition
       * if (win condition) {
@@ -152,15 +165,29 @@ class Board {
           change all sunk tile to gray
         }
       */
+      this.player.incrementHit(target);
+      if (this.player.checkSink(target)) {
+        this.store.setMessage('Sunk!');
+        this.player.applySink(target);
+        this.player.incrementSink();
+        if (this.player.checkWin()) {
+          this.store.setMessage('Win!');
+          this.game.setWinner(this.player);
+          return;
+        }
+        this.game.reRender();
+        return;
+      }
       this.player.setState(x, y, gridState.HIT);
       this.store.setMessage('Hit!');
     } else {
       this.player.setState(x, y, gridState.MISS);
       this.store.setMessage('Miss!');
       this.store.setTurn(!this.store.getTurn());
-      this.game.reRender();
     }
     this.drawTile(x, y, COLOR[this.player.getStateAtPos(x, y)]);
+    this.game.reRender();
+    console.log(this.player.getMap());
   }
 
   /**
@@ -230,7 +257,6 @@ class Board {
     }
   }
 
-
   /**
    * drawTile(x,y)
    * - draws a tile at position x, y
@@ -250,11 +276,12 @@ class Board {
   }
   /**
    * drawGrid()
-   * - draws a 10 x 10 grid
+   * - During set up, display where ship is placed
+   * - During gameplay, display the status of the grid
   */
   drawGrid() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    // if setting up, display Map, else, display state
+    // display where the ship is placed. Ships will be displayed in Black
     if (this.isSettingUp()) {
       this.player.getMap().forEach((val, curX) => {
         val.forEach((state, curY) => {
@@ -265,7 +292,7 @@ class Board {
       });
       return;
     }
-
+    // display the current state of the grid. Color is determined by the state of tile
     this.player.getState().forEach((val, curX) => {
       val.forEach((state, curY) => {
         this.ctx.fillStyle = COLOR[state];

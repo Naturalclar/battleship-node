@@ -35,9 +35,21 @@ class SetUpScreen {
 
     // Display title
     const title = document.createElement('h2');
-    const titleText = document.createTextNode(`${this.player.getName()} is Setting up...`);
-    title.appendChild(titleText);
+    const subTitle = document.createElement('p');
+    if (this.player.getSetUpComplete()){
+      const titleText = document.createTextNode(`Setup Complete!`);
+      const subTitleText = document.createTextNode(`Press Done Button`);
+      title.appendChild(titleText);
+      subTitle.appendChild(subTitleText);
+    } else {
+      const titleText = document.createTextNode(`${this.player.getName()} is Setting up...`);
+      const subTitleText = document.createTextNode(`Place your ${ships[this.player.getSetUpStage()]}`)
+      title.appendChild(titleText);
+      subTitle.appendChild(subTitleText);      
+    }
+    
     container.appendChild(title);
+    container.appendChild(subTitle);
 
     // display board to setup the ships
     const board = new Board(this.store, this.game, this.player);

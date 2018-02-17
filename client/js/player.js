@@ -20,6 +20,59 @@ class Player {
     this.setUpStage = 1;
 
     //state for game
+    this.hitCount = new Array(6).fill(0);
+    this.sinkCount = 0;
+  }
+
+  /**
+   * checkSink(index)
+   * called when a ship is hit
+   * checks weather the ship sank or not
+   * if ship sank, change the state to sank, and return true
+   * @param {number} index 
+   */
+  checkSink(index) {
+    return this.hitCount[index] === shipLength[index];
+  }
+
+  /**
+   * incrementHit(index)
+   * increment the hit count for the ship that got hit
+   * @param {number} index
+   * type of ship that got hit
+   */
+  incrementHit(index) {
+    this.hitCount[index]++;
+  }
+
+  /** 
+   * incrementSink()
+   * increment the sink count
+  */
+  incrementSink() {
+    this.sinkCount++;
+  }
+
+  /** 
+   * checkWin()
+   * returns true if sinkCount is 5, congratulations!
+  */
+  checkWin() {
+    return this.sinkCount === 5
+  }
+
+  /**
+   * applySink(index)
+   * iterate through state and change the value to SUNK
+   */
+  applySink(index) {
+    for (let i = 0; i < SIZE; i++) {
+      for (let j = 0; j < SIZE; j++) {
+        if (this.map[i][j] === index) {
+          this.state[i][j] = gridState.SUNK;
+        }
+      }
+    }
   }
 
   getSetUpComplete() {

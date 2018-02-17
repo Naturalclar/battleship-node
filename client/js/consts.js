@@ -16,6 +16,12 @@ const gridState = Object.freeze({
 });
 
 const ships = Object.freeze({
+  0: 'EMPTY',
+  1: 'CARRIER',
+  2: 'BATTLESHIP',
+  3: 'CRUISER',
+  4: 'SUBMARINE',
+  5: 'DESTROYER',
   EMPTY: 0,
   CARRIER: 1,
   BATTLESHIP: 2,
