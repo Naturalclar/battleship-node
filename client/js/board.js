@@ -86,7 +86,9 @@ class Board {
         }
       }
       return true;
-    } else if (y + length > SIZE) {
+    }
+
+    if (y + length > SIZE) {
       return false;
     }
     for (let i = 0; i < length; i += 1) {
@@ -259,6 +261,7 @@ class Board {
     this.ctx.fillRect(xPos, yPos, GRID_SIZE, GRID_SIZE);
     this.ctx.strokeRect(xPos, yPos, GRID_SIZE, GRID_SIZE);
   }
+
   /**
    * drawGrid()
    * - During set up, display where ship is placed

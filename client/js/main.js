@@ -5,4 +5,3 @@ window.onload = () => {
   const game = new Game(store);
   game.init();
 };
-
