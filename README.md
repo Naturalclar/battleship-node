@@ -1,5 +1,7 @@
 # HTML Battle Ship
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Naturalclar/battleship-node.svg)](https://greenkeeper.io/)
+
 A Simple In-Browser Battleship Game.
 
 This application is made with HTML, CSS, JS, without use of other frameworks or external libraries.
