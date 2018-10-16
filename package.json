@@ -15,8 +15,8 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "serve": "^9.3.0"
+    "eslint-plugin-promise": "^4.0.1",
+    "serve": "^10.0.2"
   },
   "repository": "https://github.com/Naturalclar/battleship-node.git"
 }
